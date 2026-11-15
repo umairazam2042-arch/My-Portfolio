@@ -17,7 +17,6 @@
   aspect-ratio: 1;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(124, 92, 255, 0.28), transparent 65%);
-  filter: blur(40px);
   z-index: -1;
   pointer-events: none;
 }
@@ -98,14 +97,86 @@
   justify-content: center;
 }
 
-.hero__frame {
+.hero__media {
   position: relative;
   width: min(320px, 78vw);
+}
+
+/* Thin outline around the photo that slowly pulses */
+.hero__ring {
+  position: absolute;
+  inset: -14px;
+  border-radius: calc(var(--radius-lg) + 10px);
+  border: 1px solid var(--color-secondary);
+  pointer-events: none;
+  animation: ring-pulse 4.5s ease-in-out infinite;
+}
+
+/* Availability badge under the photo */
+.hero__badge {
+  position: absolute;
+  left: -12px;
+  bottom: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.hero__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 8px var(--color-success);
+  animation: dot-blink 2.6s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes dot-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.hero__frame {
+  position: relative;
+  width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
   padding: 2px;
   background: var(--gradient-brand);
   box-shadow: var(--glow-primary);
+  overflow: hidden;
+  /* Gentle slow float up and down */
+  animation: photo-float 6s ease-in-out infinite;
+  transition: box-shadow var(--duration-base) var(--ease-out);
+}
+
+.hero__frame:hover {
+  box-shadow: var(--glow-primary), var(--glow-secondary);
 }
 
 .hero__photo {
@@ -114,6 +185,23 @@
   object-fit: cover;
   border-radius: calc(var(--radius-lg) - 2px);
   background: var(--color-surface);
+  transform-origin: 50% 60%;
+  transition: transform 0.6s var(--ease-out);
+}
+
+/* On hover the photo comes slightly forward */
+.hero__frame:hover .hero__photo {
+  transform: scale(1.06);
+}
+
+@keyframes photo-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
 }
 
 /* Buttons (shared; reused by other sections) */

@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react'
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react'
 import { profile } from '../data/profile'
 import profileImage from '../assets/profile.jpg'
-import { ArrowRightIcon, DownloadIcon, GithubIcon, LinkedinIcon, MailIcon } from './Icons'
+import { ArrowRightIcon, DownloadIcon, GithubIcon, InstagramIcon, LinkedinIcon, MailIcon } from './Icons'
 import './Hero.css'
 
 // Heavy canvas effect is loaded only when the hero renders.
@@ -122,6 +122,13 @@ const Hero = () => {
                 <LinkedinIcon /> LinkedIn
               </a>
             </li>
+            {profile.instagram && (
+              <li>
+                <a href={profile.instagram} target="_blank" rel="noopener noreferrer" className="hero__social">
+                  <InstagramIcon /> Instagram
+                </a>
+              </li>
+            )}
           </motion.ul>
         </div>
 
@@ -132,15 +139,22 @@ const Hero = () => {
           animate={{ clipPath: 'inset(-40% -40% -40% -40%)', opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="hero__frame">
-            <img
-              src={profileImage}
-              alt={`${profile.name}, ${profile.title}`}
-              width="800"
-              height="1000"
-              fetchPriority="high"
-              className="hero__photo"
-            />
+          <div className="hero__media">
+            <span className="hero__ring" aria-hidden="true" />
+            <div className="hero__frame">
+              <img
+                src={profileImage}
+                alt={`${profile.name}, ${profile.title}`}
+                width="800"
+                height="1000"
+                fetchPriority="high"
+                className="hero__photo"
+              />
+            </div>
+            <div className="hero__badge">
+              <span className="hero__badge-dot" aria-hidden="true" />
+              Available for work
+            </div>
           </div>
         </motion.div>
       </div>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import SectionHeading from './SectionHeading'
 import { profile } from '../data/profile'
 import { contactLimits, validateContact, validateField } from '../utils/validateContact'
-import { GithubIcon, LinkedinIcon, MailIcon, WhatsappIcon } from './Icons'
+import { GithubIcon, InstagramIcon, LinkedinIcon, MailIcon, WhatsappIcon } from './Icons'
 import './Contact.css'
 
 const emptyForm = { name: '', email: '', subject: '', message: '' }
@@ -180,7 +180,12 @@ const Contact = () => {
 
             <ul className="contact__links">
               <li>
-                <a href={`mailto:${profile.email}`} className="contact__link">
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(profile.email)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact__link"
+                >
                   <MailIcon /> <span>{profile.email}</span>
                 </a>
               </li>
@@ -199,6 +204,13 @@ const Contact = () => {
                   <LinkedinIcon /> <span>LinkedIn profile</span>
                 </a>
               </li>
+              {profile.instagram && (
+                <li>
+                  <a href={profile.instagram} target="_blank" rel="noopener noreferrer" className="contact__link">
+                    <InstagramIcon /> <span>Instagram profile</span>
+                  </a>
+                </li>
+              )}
             </ul>
 
             <p className="contact__location">{profile.location}</p>

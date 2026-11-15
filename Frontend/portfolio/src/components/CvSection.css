@@ -1,53 +1,42 @@
+.cv__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.cv__card-text {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
 .cv__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-8);
 }
 
-.cv__frame-wrapper {
-  position: relative;
-  width: 100%;
-  height: min(78vh, 900px);
-  min-height: 420px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-
-.cv__frame {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: #ffffff;
-}
-
-.cv__loading {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  display: flex;
+/* Plain text link that opens the CV in a new tab */
+.cv__link {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: var(--color-text-muted);
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
   font-size: var(--text-sm);
-  background: var(--color-surface);
+  font-weight: 600;
+  color: var(--color-primary-strong);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--duration-fast) var(--ease-out);
 }
 
-.cv__note {
-  margin-top: var(--space-4);
-  font-size: var(--text-sm);
-  color: var(--color-text-subtle);
-}
-
-.cv__mobile-card {
-  padding: var(--space-6);
-  border-radius: var(--radius-lg);
-  border: 1px dashed var(--color-border-strong);
-  background: var(--color-surface);
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-  text-align: center;
+.cv__link:hover {
+  color: var(--color-secondary);
 }

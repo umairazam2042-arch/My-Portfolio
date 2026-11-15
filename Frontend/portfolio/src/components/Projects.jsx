@@ -20,7 +20,7 @@ const Projects = () => {
 
         <div className="projects__grid">
           {sorted.map((project, index) => (
-            <Reveal key={project.id} delay={(index % 2) * 0.12}>
+            <Reveal key={project.id} delay={(index % 2) * 0.12} className="projects__item">
               <ProjectCard project={project} />
             </Reveal>
           ))}

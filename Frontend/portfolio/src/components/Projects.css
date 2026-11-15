@@ -1,11 +1,27 @@
 .projects__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-8);
+  gap: var(--space-6);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 640px) {
   .projects__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (min-width: 1040px) {
+  .projects__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+}
+
+/* Make every card in a row the same height */
+.projects__item {
+  display: flex;
+}
+
+.projects__item > .project-card {
+  flex: 1;
 }

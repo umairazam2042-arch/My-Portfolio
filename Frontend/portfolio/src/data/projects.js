@@ -24,7 +24,7 @@ export const projects = [
     tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'ImageKit.io'],
     image: null,
     featured: false,
-    github: 'https://github.com/umairazam2042-arch/E-commerece-App/tree/main/E-commerece-frontend',
+    // github: 'https://github.com/umairazam2042-arch/E-commerece-App/tree/main/E-commerece-frontend',
     live: 'https://e-commerece-app-lemon.vercel.app/register',
   },
   {
@@ -48,5 +48,16 @@ export const projects = [
     featured: false,
     github: 'https://github.com/umairazam2042-arch/Weather-App/tree/main/Weather-app',
     live: 'https://weatherapp-57000.netlify.app/',
+  },
+  {
+    id: 'age-calculator',
+    name: 'Age Calculator',
+    description:
+      'A web app that calculates age from a selected date of birth, built with plain HTML, CSS and JavaScript.',
+    tech: ['HTML5', 'CSS3', 'JavaScript'],
+    image: null,
+    featured: false,
+    github: 'https://github.com/umairazam2042-arch/Age-Calculater',
+    live: 'https://age-calculater1.vercel.app/',
   },
 ]

@@ -14,6 +14,8 @@ export const profile = {
   whatsappDisplay: '+92 342 6776398',
   github: 'https://github.com/umairazam2042-arch',
   linkedin: 'https://www.linkedin.com/in/umair-azam-1a2252435/',
+  // Instagram profile URL. Leave empty to hide the link.
+  instagram: 'https://www.instagram.com/umairazam2042/',
   cvPath: '/Umair-Azam-CV.pdf',
 }
 
