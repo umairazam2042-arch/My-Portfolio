@@ -1,0 +1,85 @@
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient__blob {
+  position: absolute;
+  width: min(60vw, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.22;
+  will-change: transform;
+}
+
+.ambient__blob--violet {
+  top: -15%;
+  left: -10%;
+  background: #7c5cff;
+  animation: ambient-drift-a 26s ease-in-out infinite alternate;
+}
+
+.ambient__blob--cyan {
+  bottom: -20%;
+  right: -10%;
+  background: #22d3ee;
+  opacity: 0.16;
+  animation: ambient-drift-b 32s ease-in-out infinite alternate;
+}
+
+.ambient__shape {
+  position: absolute;
+  will-change: transform;
+  opacity: 0.35;
+}
+
+.ambient__shape--square {
+  top: 18%;
+  right: 12%;
+  width: 56px;
+  height: 56px;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 12px;
+  animation: ambient-float 14s ease-in-out infinite;
+}
+
+.ambient__shape--ring {
+  bottom: 22%;
+  left: 8%;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--color-secondary);
+  animation: ambient-float 18s ease-in-out infinite reverse;
+}
+
+.ambient__shape--triangle {
+  top: 60%;
+  right: 22%;
+  width: 0;
+  height: 0;
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-bottom: 38px solid var(--color-primary);
+  opacity: 0.25;
+  animation: ambient-float 22s ease-in-out infinite;
+}
+
+@keyframes ambient-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(8vw, 6vh, 0) scale(1.15); }
+}
+
+@keyframes ambient-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-7vw, -5vh, 0) scale(1.1); }
+}
+
+@keyframes ambient-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -18px, 0) rotate(12deg); }
+}

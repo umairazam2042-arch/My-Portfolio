@@ -1,0 +1,187 @@
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--header-height);
+  transition:
+    background-color var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+  border-bottom: 1px solid transparent;
+}
+
+.navbar--scrolled {
+  background-color: color-mix(in srgb, var(--color-bg) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.navbar__brand {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.navbar__brand-dot {
+  position: absolute;
+  right: -6px;
+  top: 2px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  position: relative;
+  display: inline-block;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--color-text);
+}
+
+.navbar__link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Sliding indicator for the active link (motion layoutId) */
+.navbar__indicator {
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-brand);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.navbar__menu-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/* Mobile: hamburger + slide-down panel */
+@media (max-width: 860px) {
+  .navbar__menu-button {
+    display: inline-flex;
+  }
+
+  .navbar__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-2) var(--gutter) var(--space-6);
+    background: color-mix(in srgb, var(--color-bg) 96%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition:
+      opacity var(--duration-base) var(--ease-out),
+      transform var(--duration-base) var(--ease-out);
+  }
+
+  .navbar__menu--open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .navbar__link {
+    display: block;
+    padding: var(--space-3) var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .navbar__indicator {
+    left: var(--space-2);
+    right: auto;
+    width: 40px;
+    bottom: 10px;
+  }
+
+  /* Staggered slide-in for mobile menu items */
+  .navbar__menu li {
+    opacity: 0;
+    transform: translateX(-12px);
+    transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+  }
+
+  .navbar__menu--open li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .navbar__menu--open li:nth-child(1) { transition-delay: 60ms; }
+  .navbar__menu--open li:nth-child(2) { transition-delay: 110ms; }
+  .navbar__menu--open li:nth-child(3) { transition-delay: 160ms; }
+  .navbar__menu--open li:nth-child(4) { transition-delay: 210ms; }
+  .navbar__menu--open li:nth-child(5) { transition-delay: 260ms; }
+  .navbar__menu--open li:nth-child(6) { transition-delay: 310ms; }
+}
